@@ -11,3 +11,8 @@ With these files, you may reconstruct a strain specific model by taking the pan_
 strain_model = removeRxns( pan_model, pan_model.rxns(rxn_strain_matrix(:,I)==0) ).
 
 The genes of the pan_model are written in the form "x(index)" where "index" refers to an entry of the pan_genome_sequences. For example, Thymidylate synthase (TMDS) has the GPR x(18998), which indicates that pan_genome_sequences gene number 18998 is needed to perform this reaction. The rxn_strain_matrix encodes the pre-computed boolean evaluations of these GPRs using the genetic inventory of each strain. Additionally, "GAP" indicates necessary reactions with no genes found, "SPONT" indicated spontaneous reactions.
+
+
+The processed metagenomic data is found in the file 'strain_by_species_abundance.mat', with the associated B. fragilis strains in the file 'meta_G_strains.mat' and the co-occuring species listed in species_names.mat.
+
+The processed transcriptomic data from the in vitro experiments is found in 'single_strain_translatomics_CPM.xlsx,' and the metaT is found in 'sample_gene_counts_CPM.mat,' 'gene_functions.mat,' and metadata in 'disease_status.mat' and 'metatranscriptomic_metadata.xlsx.'
