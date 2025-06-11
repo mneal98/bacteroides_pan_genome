@@ -139,12 +139,11 @@ load strain_list.mat
 
 x=tsne(1*rxn_strain_matrix','Perplexity',5);
 
-C=flip(plasma(3));
-C=C(1:2,:);
+C=flip(plasma(11));
 
-scatter(x(1:344,1),x(1:344,2),30,C(1,:),'filled')
+scatter(x(1:344,1),x(1:344,2),30,C(9,:),'filled')
 hold on
-scatter(x(345:end,1),x(345:end,2),30,C(2,:),'filled')
+scatter(x(345:end,1),x(345:end,2),30,C(3,:),'filled')
 
 title('tSNE of Reaction Presence')
 xlabel('Dimension One (Unitless)')

@@ -101,12 +101,12 @@ load strain_list.mat
 
 x=tsne(1*gene_strain_mat','Perplexity',5);
 
-C=flip(plasma(3));
-C=C(1:2,:);
+C=flip(plasma(11));
 
-scatter(x(1:344,1),x(1:344,2),30,C(1,:),'filled')
+
+scatter(x(1:344,1),x(1:344,2),30,C(9,:),'filled')
 hold on
-scatter(x(345:end,1),x(345:end,2),30,C(2,:),'filled')
+scatter(x(345:end,1),x(345:end,2),30,C(3,:),'filled')
 
 title('tSNE of Gene Presence')
 xlabel('Dimension One (Unitless)')
@@ -120,8 +120,8 @@ clc
 clearvars
 close all
 load gene_strain_mat.mat
-gene_strain_mat=gene_strain_mat(:,1:344);
-d=1-squareform(pdist(1*gene_strain_mat','jaccard'));
+% gene_strain_mat=gene_strain_mat(:,1:344);
+d=(1-squareform(pdist(1*gene_strain_mat','jaccard')));
 c=clustergram(d);
 idx=cellfun(@str2num,c.ColumnLabels);
 idy=cellfun(@str2num,c.RowLabels);
@@ -133,4 +133,5 @@ Ax.XDisplayLabels = nan(size(Ax.XDisplayData));
 Ax.YDisplayLabels = nan(size(Ax.YDisplayData));
 title('Jaccard Similarity Between Strains')
 
-
+xlabel('Strain')
+ylabel('Strain')
