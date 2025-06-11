@@ -43,7 +43,7 @@ significant=find(p_vals<0.05);
 p_vals=p_vals(significant);
 delta=delta(significant);
 species_names=species_names(significant);
-
+species_names_orig=species_names;
 for I=1:length(species_names)
     species_names{I}=extractBefore(species_names{I},' ');
 end
@@ -116,7 +116,7 @@ significant=find(p_vals<0.05);
 p_vals=p_vals(significant);
 delta=delta(significant);
 species_names=species_names(significant);
-
+species_names_orig=species_names;
 for I=1:length(species_names)
     species_names{I}=extractBefore(species_names{I},' ');
     if contains(species_names{I},'[')
