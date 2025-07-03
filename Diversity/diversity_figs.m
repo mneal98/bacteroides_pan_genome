@@ -65,6 +65,9 @@ f=figure();
 %https://www.sciencedirect.com/science/article/pii/S0740002023001211
 P=[exp(mean(params(:,2))),mean(params(:,1));904 .496; 1236 .329; 2404 .373; 5559 .375; 958 .435; 4022 .3491; 2772 .3395;  4300 .276; 2720 .301 ];
 names={'Bacteroides fragilis','Streptococcus pneumoniea','Staphylococcus aureus','Salmonella entrica','Escherichia coli','Mycobacterium tuberculoisis','Pseudomonas aeruginosa','Acinetobacter baumanii','Bacillus subtilis','Lactiplantibacillus plantarum'};
+for I=1:length(names)
+    names{I}=['{\it ',names{I},'}'];
+end
 [~,ind]=sort(P(:,1).*803.^P(:,2),'descend');
 P=P(ind,:);
 names=names(ind);
@@ -74,7 +77,7 @@ C=flip(plasma(length(P)));
 hold on
 for I=1:length(P)
     y2=P(I,1)*x.^P(I,2);
-    if strcmp(names{I},'Bacteroides fragilis')
+    if contains(names{I},'Bacteroides fragilis')
         plot(x,y2,'Color',C(I,:),'LineWidth',3)
         continue
     end
@@ -108,7 +111,7 @@ scatter(x(1:344,1),x(1:344,2),30,C(9,:),'filled')
 hold on
 scatter(x(345:end,1),x(345:end,2),30,C(3,:),'filled')
 
-title('tSNE of Gene Presence')
+title('t-SNE of Gene Presence')
 xlabel('Dimension One (Unitless)')
 ylabel('Dimension Two (Unitless)')
 legend({'Isolates','MAGs'},'Location','northwest')

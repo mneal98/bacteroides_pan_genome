@@ -145,7 +145,7 @@ scatter(x(1:344,1),x(1:344,2),30,C(9,:),'filled')
 hold on
 scatter(x(345:end,1),x(345:end,2),30,C(3,:),'filled')
 
-title('tSNE of Reaction Presence')
+title('t-SNE of Reaction Presence')
 xlabel('Dimension One (Unitless)')
 ylabel('Dimension Two (Unitless)')
 legend({'Isolates','MAGs'},'Location','northwest')

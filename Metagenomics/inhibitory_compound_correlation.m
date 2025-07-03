@@ -64,6 +64,9 @@ for I=1:num_groups
     ind=find(strcmp(species_names,most_present_genera{I}));
     plots(end+1)=scatter(delta(ind),p_vals(ind),75,C(I+2,:),'filled');
 end
+for I=1:length(most_present_genera)
+    most_present_genera{I}=['{\it',most_present_genera{I},'}'];
+end
 legend(flip(plots),flip(['Other';most_present_genera]),'Location','southwest')
 
 title('Association Between Gut Species and BfUbb Presence')
@@ -156,6 +159,12 @@ end
 for I=1:2
     ind=find(strcmp(species_names,most_present_positive_genera{I}));
     plots(end+1)=scatter(delta(ind),p_vals(ind),75,C(I+2+num_groups,:),'filled');
+end
+for I=1:length(most_present_genera)
+    most_present_genera{I}=['{\it',most_present_genera{I},'}'];
+end
+for I=1:length(most_present_positive_genera)
+    most_present_positive_genera{I}=['{\it',most_present_positive_genera{I},'}'];
 end
 legend(flip(plots),flip(['Other';most_present_genera;most_present_positive_genera]),'Location','northwest')
 title('Association Between Gut Species and BFT Toxin Presence')

@@ -34,8 +34,8 @@ labels=labels(idx);
 b=boxplot(ox_gene_counts,'Labels',labels,'BoxStyle','filled','Colors',C,'Widths',0.5);
 
 
-title('CPM of Oxidative Genes in Gut Metatranscriptomics')
-ylabel('CPM')
+title('Expression of Respiratory Genes in Gut Metatranscriptomics')
+ylabel('Expression level (CPM)')
 
 
 
@@ -86,7 +86,7 @@ expr_ratio=log2(expr_ratio+1);
 b=boxplot(expr_ratio,'Labels',labels,'BoxStyle','filled','Colors',C,'Widths',0.5);
 
 
-title('Relative Expression of Oxidative Genes')
+title('Relative Expression of Respiratory Genes')
 ylabel('Log_2 Fold Change (Gut / Glucose Alone)')
 
 
@@ -131,8 +131,8 @@ scatter(x(ind,1),x(ind,2),50,a(ind),'filled');
 xlabel(['Component 1 (',num2str(round(e(1))),'%)'])
 ylabel(['Component 2 (',num2str(round(e(2))),'%)'])
 
-title('PCA of Gut Metatranscriptomic Samples')
-legend({'','High Oxidative Gene Activity','Low Oxidative Gene Activity'})
+title('PCA of {\itin vivo Bacteroides fragilis} Expression')
+legend({'','High Respiratory Gene Activity','Low Respiratory Gene Activity'})
 
 %%
 %and a heatmap
@@ -166,4 +166,4 @@ heatmap(ox_gene_counts(idx,idy),'GridVisible','off','Colormap',flipud(plasma),..
 Ax = gca;
 Ax.YDisplayLabels = nan(size(Ax.YDisplayData));
 ylabel('Gut Metatranscriptomic Sample')
-title('Log_1_0 CPM of Oxidative Genes')
+title('Expression of Respiratory Genes log_1_0(CPM)')

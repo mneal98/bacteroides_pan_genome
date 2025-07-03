@@ -68,6 +68,9 @@ for I=1:num_groups
     ind=find(strcmp(species_names,most_present_genera{I}));
     plots(end+1)=scatter(delta(ind),p_vals(ind),75,C(I+2,:),'filled');
 end
+for I=1:length(most_present_genera)
+    most_present_genera{I}=['{\it',most_present_genera{I},'}'];
+end
 legend(flip(plots),flip(['Other';most_present_genera]),'Location','southwest')
 
 title('Association Between Gut Species and Degradation Reaction Presence')

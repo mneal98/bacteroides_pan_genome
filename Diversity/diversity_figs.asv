@@ -2,7 +2,7 @@ clc
 clearvars
 close all
 
-%first up, a heaps law.
+%heaps law.
 load gene_strain_mat.mat
 load strain_list.mat
 
@@ -65,6 +65,9 @@ f=figure();
 %https://www.sciencedirect.com/science/article/pii/S0740002023001211
 P=[exp(mean(params(:,2))),mean(params(:,1));904 .496; 1236 .329; 2404 .373; 5559 .375; 958 .435; 4022 .3491; 2772 .3395;  4300 .276; 2720 .301 ];
 names={'Bacteroides fragilis','Streptococcus pneumoniea','Staphylococcus aureus','Salmonella entrica','Escherichia coli','Mycobacterium tuberculoisis','Pseudomonas aeruginosa','Acinetobacter baumanii','Bacillus subtilis','Lactiplantibacillus plantarum'};
+for I=1:length(names)
+    names{I}=['{\it',names{I},'}'];
+end
 [~,ind]=sort(P(:,1).*803.^P(:,2),'descend');
 P=P(ind,:);
 names=names(ind);
@@ -93,21 +96,20 @@ ylabel('Cumulative Pan-Genome Size')
 clc
 clearvars
 close all
-%lets do the tsne
+%tsne to show no separation of MAGs and isolates
 load gene_strain_mat.mat
 load strain_list.mat
 
 
 
 x=tsne(1*gene_strain_mat','Perplexity',5);
-% [~,x,~,~,e]=pca(1*gene_strain_mat');
 
-C=flip(plasma(3));
-C=C(1:2,:);
+C=flip(plasma(11));
 
-scatter(x(1:344,1),x(1:344,2),30,C(1,:),'filled')
+
+scatter(x(1:344,1),x(1:344,2),30,C(9,:),'filled')
 hold on
-scatter(x(345:end,1),x(345:end,2),30,C(2,:),'filled')
+scatter(x(345:end,1),x(345:end,2),30,C(3,:),'filled')
 
 title('tSNE of Gene Presence')
 xlabel('Dimension One (Unitless)')
@@ -121,14 +123,18 @@ clc
 clearvars
 close all
 load gene_strain_mat.mat
-d=squareform(pdist(1*gene_strain_mat','euclidean'));
+% gene_strain_mat=gene_strain_mat(:,1:344);
+d=(1-squareform(pdist(1*gene_strain_mat','jaccard')));
 c=clustergram(d);
 idx=cellfun(@str2num,c.ColumnLabels);
 idy=cellfun(@str2num,c.RowLabels);
-heatmap(d(idy,idx),'GridVisible','off','Colormap',autumn)
-clim([0,100])
+heatmap(d(idy,idx),'GridVisible','off','Colormap',flipud(plasma))
+clim([0,1])
 
 Ax = gca;
 Ax.XDisplayLabels = nan(size(Ax.XDisplayData));
 Ax.YDisplayLabels = nan(size(Ax.YDisplayData));
-title('Strain ')
+title('Jaccard Similarity Between Strains')
+
+xlabel('Strain')
+ylabel('Strain')
