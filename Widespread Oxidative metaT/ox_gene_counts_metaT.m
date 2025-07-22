@@ -34,9 +34,10 @@ labels=labels(idx);
 b=boxplot(ox_gene_counts,'Labels',labels,'BoxStyle','filled','Colors',C,'Widths',0.5);
 
 
-title('Expression of Respiratory Genes in Gut Metatranscriptomics')
+title('{\it In Vivo} Expression of Respiratory Genes')
 ylabel('Expression level (CPM)')
-
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 
 
 %%
@@ -48,7 +49,7 @@ close all
 sample_gene_counts_CPM=importdata('sample_gene_counts_CPM.mat')+1;%add pseudocount
 genes=importdata('gene_functions.mat');
 
-glucose_only_data=table2cell(readtable('single_strain_translatomics_CPM.xlsx'));
+glucose_only_data=table2cell(readtable('single_strain_transcriptomics_CPM.xlsx'));
 glucose_only_cpm=cell2mat(glucose_only_data(:,2))+1;%add pseudocount
 glucose_only_genes=glucose_only_data(:,1);
 
@@ -87,8 +88,10 @@ b=boxplot(expr_ratio,'Labels',labels,'BoxStyle','filled','Colors',C,'Widths',0.5
 
 
 title('Relative Expression of Respiratory Genes')
-ylabel('Log_2 Fold Change (Gut / Glucose Alone)')
-
+% ylabel('Log_2 Fold Change (Gut / Glucose Alone)')
+ylabel('Log_2(Gut / Glucose Alone)')
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 
 
 %%
@@ -131,8 +134,10 @@ scatter(x(ind,1),x(ind,2),50,a(ind),'filled');
 xlabel(['Component 1 (',num2str(round(e(1))),'%)'])
 ylabel(['Component 2 (',num2str(round(e(2))),'%)'])
 
-title('PCA of {\itin vivo Bacteroides fragilis} Expression')
+title('PCA of{\it In Vivo} Expression')
 legend({'','High Respiratory Gene Activity','Low Respiratory Gene Activity'})
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 
 %%
 %and a heatmap
@@ -165,5 +170,7 @@ heatmap(ox_gene_counts(idx,idy),'GridVisible','off','Colormap',flipud(plasma),..
     'XData',labels(idy))
 Ax = gca;
 Ax.YDisplayLabels = nan(size(Ax.YDisplayData));
-ylabel('Gut Metatranscriptomic Sample')
+ylabel('{\it In Vivo} Sample')
 title('Expression of Respiratory Genes log_1_0(CPM)')
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)

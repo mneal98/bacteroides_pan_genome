@@ -6,7 +6,7 @@ close all
 load gene_strain_mat.mat
 load strain_list.mat
 
-N=250;
+N=200;
 params=zeros(N,2);
 yparams=params;
 %X is for total, Y is for core
@@ -54,9 +54,11 @@ plot(x,prctile(Y',95),'k--')
 
 xlabel('Number of Strains')
 ylabel('Number of Gene Clusters')
-title('Heap''s Law Curve for the {\it B. fragilis} Pan Genome')
-legend(['Median Cumlative Count (b = ',num2str(round(mean(params(:,1)),3)),')'], '','',...
+title('{\it B. fragilis} Pan-Genome Heap''s Law')
+legend(['Median Cumulative Count (b = ',num2str(round(mean(params(:,1)),3)),')'], '','',...
     ['Median Conserved Count (b = ',num2str(round(mean(yparams(:,1)),3)),')'],'Location','east')
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 
 %compare to others
 f=figure();
@@ -64,7 +66,7 @@ f=figure();
 % doi.org/10.3389/fmicb.2019.00834 
 %https://www.sciencedirect.com/science/article/pii/S0740002023001211
 P=[exp(mean(params(:,2))),mean(params(:,1));904 .496; 1236 .329; 2404 .373; 5559 .375; 958 .435; 4022 .3491; 2772 .3395;  4300 .276; 2720 .301 ];
-names={'Bacteroides fragilis','Streptococcus pneumoniea','Staphylococcus aureus','Salmonella entrica','Escherichia coli','Mycobacterium tuberculoisis','Pseudomonas aeruginosa','Acinetobacter baumanii','Bacillus subtilis','Lactiplantibacillus plantarum'};
+names={'Bacteroides fragilis','Streptococcus pneumoniea','Staphylococcus aureus','Salmonella enterica','Escherichia coli','Mycobacterium tuberculosis','Pseudomonas aeruginosa','Acinetobacter baumanii','Bacillus subtilis','Lactiplantibacillus plantarum'};
 for I=1:length(names)
     names{I}=['{\it ',names{I},'}'];
 end
@@ -84,11 +86,13 @@ for I=1:length(P)
     plot(x,y2,'Color',C(I,:),'LineWidth',1)
 
 end
-legend(names, ...
-    'Location','northwest')
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 title('Heap''s Law Curves')
 xlabel('Number of Strains')
 ylabel('Cumulative Pan-Genome Size')
+legend(names, ...
+    'Location','northwest','FontSize',10)
 
 
 
@@ -115,7 +119,8 @@ title('t-SNE of Gene Presence')
 xlabel('Dimension One (Unitless)')
 ylabel('Dimension Two (Unitless)')
 legend({'Isolates','MAGs'},'Location','northwest')
-
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 
 %%
 %clustergram
@@ -138,3 +143,5 @@ title('Jaccard Similarity Between Strains')
 
 xlabel('Strain')
 ylabel('Strain')
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)

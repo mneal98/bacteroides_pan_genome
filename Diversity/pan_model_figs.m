@@ -42,6 +42,8 @@ end
 
 title('Pan-Reactome Content Distribution')
 ylabel('Count')
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 
 
 %%
@@ -91,7 +93,8 @@ end
 legend({'Core ','Accessory'},'Location','northeast')
 ylabel('Count')
 title('Core and Accessory Reactions by Category')
-
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 
 %%
 clc
@@ -126,6 +129,8 @@ end
 legend({'Core ','Accessory'},'Location','northeast')
 ylabel('Count')
 title('Core and Accessory Sole C/N Sources')
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
 
 %%
 clc
@@ -149,3 +154,6 @@ title('t-SNE of Reaction Presence')
 xlabel('Dimension One (Unitless)')
 ylabel('Dimension Two (Unitless)')
 legend({'Isolates','MAGs'},'Location','northwest')
+
+set(gca,'FontName','Arial')
+set(gca,'FontSize',14)
