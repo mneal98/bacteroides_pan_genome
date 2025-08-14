@@ -1,5 +1,5 @@
 The folders contain scripts that make the figures for each main section. 
-All codes run in MATLAB R2024b; all non-standard functions (such as the colormap) are provided in this repository. No further installations required.
+All codes run in MATLAB R2024b with the Cobra Toolbox installed; all other non-standard functions (such as the colormap) are provided in this repository.
 
 For utilizing the models, the main files are:
 1) pan_model.mat. This is the pan-genome model in matlab format. The reactions and metabolites are also listed in the spreadsheet pan_model.xlsx.
